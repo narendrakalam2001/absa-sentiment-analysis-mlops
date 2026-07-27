@@ -1,0 +1,50 @@
+name: CI — ABSA Sentiment Analysis
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10.13"
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create required directories
+        run: |
+          mkdir -p absa_models logs data docs/plots
+
+      - name: Download NLTK data
+        run: |
+          python -c "import nltk; nltk.download('stopwords', quiet=True)"
+
+      - name: Run pytest with coverage
+        run: |
+          pytest tests/test_absa_pipeline.py -v \
+            --cov=src \
+            --cov-report=term-missing \
+            --cov-report=xml \
+            --tb=short
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false

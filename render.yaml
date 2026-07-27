@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: absa-sentiment-analysis
+    runtime: python
+    buildCommand: |
+      pip install -r requirements_api.txt &&
+      python -c "import nltk; nltk.download('stopwords', quiet=True)"
+    startCommand: uvicorn serving.absa_api:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13

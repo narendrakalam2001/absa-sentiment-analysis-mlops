@@ -1,0 +1,162 @@
+{
+  "model_details": {
+    "name": "ABSA-RidgeClassifier",
+    "model_name": "RidgeClassifier",
+    "version": "1.0",
+    "type": "Multi-class text classification",
+    "task": "Aspect-Based Sentiment Analysis",
+    "dataset": "SemEval 2014 Task 4",
+    "dataset_url": "https://huggingface.co/datasets/sem_eval_2014_task_4",
+    "domain": "restaurants",
+    "created_at": "2026-07-16 17:13:06",
+    "author": "Narendra Kalam",
+    "contact": "MSc Computer Science \u2014 NASSCOM Gold Medalist",
+    "license": "MIT"
+  },
+  "intended_use": {
+    "primary_use": "Aspect-level sentiment classification in customer reviews",
+    "primary_users": [
+      "E-commerce platforms (Amazon India, Flipkart) \u2014 product review analysis",
+      "Banking (HDFC Bank) \u2014 service feedback sentiment tagging",
+      "Healthcare \u2014 patient feedback analysis"
+    ],
+    "out_of_scope": [
+      "Document-level sentiment (use sentence-level ABSA instead)",
+      "Languages other than English",
+      "Real-time streaming without drift monitoring"
+    ]
+  },
+  "training_data": {
+    "source": "SemEval 2014 Task 4 (HuggingFace)",
+    "domain": "restaurants",
+    "train_samples": 2881,
+    "val_samples": 721,
+    "test_samples": 1119,
+    "total_samples": 4721,
+    "class_distribution": {
+      "positive": 727,
+      "negative": 196,
+      "neutral": 196
+    },
+    "preprocessing": [
+      "Aspect-aware context extraction (\u00b15 word window)",
+      "TF-IDF vectorization (unigrams + bigrams + trigrams)",
+      "Stopword removal (preserving negation)",
+      "Aspect + sentence combined text: 'aspect [SEP] sentence'",
+      "Numeric feature engineering (text_len, lexicon_score, has_negation, ...)",
+      "RandomOverSampler for class imbalance"
+    ]
+  },
+  "metrics": {
+    "macro_f1": 0.6212,
+    "weighted_f1": 0.7247,
+    "accuracy": 0.7364,
+    "roc_auc": 0.823,
+    "ks_negative": 0.0,
+    "train_val_gap": 0.2977,
+    "cv_mean_f1": 0.6586,
+    "cv_std_f1": 0.0235,
+    "n_classes_actual": 3
+  },
+  "per_class_f1": {
+    "positive": 0.8394,
+    "negative": 0.5955,
+    "neutral": 0.4286
+  },
+  "business_impact": {
+    "cost_model": "\u20b9-based misclassification cost matrix",
+    "evaluation": {
+      "n_misclassified": 301,
+      "total_cost_inr": 6860.0,
+      "per_sample_cost_inr": 6.1305,
+      "negative_missed": 49,
+      "positive_flagged_wrong": 61,
+      "accuracy": 0.731
+    },
+    "key_insight": "Missing negative reviews (predicting positive) costs \u20b950/instance. Model reduces missed negatives vs random baseline by ~70%."
+  },
+  "thresholds": {
+    "negative": 0.2749
+  },
+  "pipeline_config": {
+    "vectorizer": "TF-IDF (max_features=20000, ngrams=1-3)",
+    "class_balancing": "RandomOverSampler",
+    "calibration": "CalibratedClassifierCV (isotonic, cv=prefit)",
+    "feature_order": [
+      "combined_text",
+      "aspect_in_context",
+      "text_len",
+      "word_count",
+      "aspect_position",
+      "lexicon_score",
+      "has_negation",
+      "has_exclamation",
+      "has_question"
+    ],
+    "leakage_check": true,
+    "mlflow_tracking": true,
+    "challenger_system": "3-gate Champion-Challenger"
+  },
+  "feature_importance": {
+    "feature": {
+      "20016": "tfidf_context__small",
+      "9100": "tfidf_combined__not",
+      "19154": "tfidf_context__nt",
+      "18975": "tfidf_context__mediocre",
+      "19162": "tfidf_context__nt great",
+      "3523": "tfidf_combined__dinner",
+      "20395": "tfidf_context__try",
+      "18573": "tfidf_context__horrible",
+      "18290": "tfidf_context__food ok",
+      "18898": "tfidf_context__lunch",
+      "19153": "tfidf_context__nothing special",
+      "19340": "tfidf_context__per",
+      "19192": "tfidf_context__okay",
+      "17545": "tfidf_context__check",
+      "16828": "tfidf_combined__worst",
+      "20339": "tfidf_context__tiny",
+      "19331": "tfidf_context__pay",
+      "20567": "tfidf_context__well",
+      "20426": "tfidf_context__typical",
+      "17171": "tfidf_context__anything"
+    },
+    "importance": {
+      "20016": 0.8324782689055635,
+      "9100": 0.6054272582416357,
+      "19154": 0.5929051355878878,
+      "18975": 0.5708389968264145,
+      "19162": 0.5000333784191993,
+      "3523": 0.4956062890841822,
+      "20395": 0.4898755110608229,
+      "18573": 0.4832977926470954,
+      "18290": 0.478861334021721,
+      "18898": 0.45827343208210847,
+      "19153": 0.45247808253827476,
+      "19340": 0.44495346427722104,
+      "19192": 0.44382739742694916,
+      "17545": 0.4338069974966081,
+      "16828": 0.4326879394262515,
+      "20339": 0.43247179997427554,
+      "19331": 0.43104142891494224,
+      "20567": 0.42731778942659715,
+      "20426": 0.42709055626441456,
+      "17171": 0.4185518238813308
+    }
+  },
+  "shap_top_features": {},
+  "ethical_considerations": {
+    "bias_risks": [
+      "Model may over-detect negative sentiment in reviews from non-native English speakers",
+      "Conflict class underrepresented \u2014 monitor recall_conflict",
+      "Restaurant domain performs better than laptop domain due to dataset size"
+    ],
+    "fairness_checks": "Class-wise F1 monitored; conflict class given extra weight",
+    "data_privacy": "No PII in SemEval 2014 dataset"
+  },
+  "caveats": [
+    "Model trained on SemEval 2014; performance degrades on newer slang/emojis",
+    "Context window (\u00b15 words) may miss long-range sentiment dependencies",
+    "For production, schedule retraining if PSI > 0.20 on any feature",
+    "BERT-based models (e.g. RoBERTa) will outperform TF-IDF; this is the baseline"
+  ]
+}

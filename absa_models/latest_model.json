@@ -1,0 +1,7 @@
+{
+  "model_name": "absa_model_RidgeClassifier_v1.joblib",
+  "thresholds": {
+    "negative": 0.2749
+  },
+  "model_card_path": "absa_models\\model_card_RidgeClassifier_v1.json"
+}

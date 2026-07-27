@@ -1,0 +1,29 @@
+[
+  {
+    "decision": "PROMOTED",
+    "reason": "No existing champion \u2014 first model auto-promoted",
+    "challenger_name": "RidgeClassifier",
+    "challenger_macro_f1": 0.6212,
+    "challenger_roc_auc": 0.823,
+    "champion_name": null,
+    "champion_macro_f1": null,
+    "evaluated_at": "2026-07-12 20:51:39"
+  },
+  {
+    "decision": "REJECTED",
+    "reason": "Gates failed: macro-F1 improvement -0.0000 < 0.005 | train-val gap 0.2977 > 0.1",
+    "evaluated_at": "2026-07-16 17:13:07",
+    "challenger_name": "RidgeClassifier",
+    "challenger_macro_f1": 0.6212,
+    "challenger_roc_auc": 0.823,
+    "challenger_gap": 0.2977,
+    "champion_name": "unknown",
+    "champion_macro_f1": 0.6212,
+    "champion_roc_auc": 0.823,
+    "gates": {
+      "f1_improvement_passed": false,
+      "roc_auc_passed": true,
+      "gap_passed": false
+    }
+  }
+]

@@ -1,0 +1,21 @@
+# .dockerignore — keep Docker images lean
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.github/
+venv/
+.venv/
+.env
+*.md
+notebooks/
+simulation/
+tests/
+docs/
+mlruns/
+mlartifacts/
+.pytest_cache/
+.coverage
+coverage.xml
+*.ipynb
+data/

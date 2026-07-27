@@ -1,0 +1,43 @@
+# ============================================================
+# .GITIGNORE — Resume Screener AI
+# ============================================================
+
+# ── Python cache ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual environments ──────────────────────────────────────
+venv/
+env/
+.venv/
+.env/
+
+# ── Environment / secrets ────────────────────────────────────
+.env
+*.env
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Dataset — full file too large, sample pushed instead ─────
+data/*.zip
+# data/sample_resumes.csv → pushed for HR to test
+
+# ── MLflow ───────────────────────────────────────────────────
+mlruns/
+mlflow.db
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo

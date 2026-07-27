@@ -1,0 +1,24 @@
+timestamp,text,aspect_term,domain,predicted_sentiment,decision,confidence,rule_triggered
+1784362951.7057884,We had to wait over an hour for our food to arrive.,wait time,restaurants,negative,REVIEW,0.5488,prob_negative=0.549 >= 0.2749 → human review
+1784362954.3801079,Interest rates are competitive compared to other banks.,interest rates,banking,positive,POSITIVE,0.6872,
+1784362957.012841,Overheats badly when running multiple applications.,heating,laptops,positive,POSITIVE,0.6828,
+1784362959.6922379,Weighs around 1.8kg which is standard for this category.,weight,laptops,positive,POSITIVE,0.8175,
+1784362962.3459408,The waiter was extremely helpful and patient.,waiter,restaurants,positive,POSITIVE,0.6733,
+1784362964.9781098,The restrooms were dirty and not maintained at all.,cleanliness,restaurants,negative,ESCALATE,0.8916,prob_negative=0.892 >= 0.70 → immediate escalation
+1784362967.677403,The app crashes frequently and transactions fail often.,mobile app,banking,positive,POSITIVE,0.6636,
+1784362970.3529992,Loan processing was smooth and completed within 3 days.,loan process,banking,positive,POSITIVE,0.787,
+1784362973.0107121,"Boots up in seconds, storage speed is incredible.",storage,laptops,positive,POSITIVE,0.8704,
+1784362975.6452694,"Ambiance was romantic and cozy, loved the lighting.",ambiance,restaurants,positive,POSITIVE,0.8212,
+1784362978.3100593,"Food arrived hot and fresh, presentation was beautiful.",food,restaurants,positive,POSITIVE,0.8704,
+1784362980.9259036,The waiter was extremely helpful and patient.,waiter,restaurants,positive,POSITIVE,0.6733,
+1784362983.559954,Hidden charges were applied without any prior notice.,charges,banking,positive,REVIEW,0.4233,prob_negative=0.306 >= 0.2749 → human review
+1784362986.2130191,The place was very noisy and we could not hear each other.,noise,restaurants,negative,ESCALATE,0.8871,prob_negative=0.887 >= 0.70 → immediate escalation
+1784362988.8606586,The credit card offers excellent cashback rewards.,credit card,banking,positive,POSITIVE,0.8817,
+1784362991.4927514,Staff was rude and dismissive when we asked questions.,staff,restaurants,negative,REVIEW,0.6595,prob_negative=0.660 >= 0.2749 → human review
+1784362994.1264377,The place was very noisy and we could not hear each other.,noise,restaurants,negative,ESCALATE,0.8871,prob_negative=0.887 >= 0.70 → immediate escalation
+1784362996.8039536,The portion sizes are average for this price range.,portion size,restaurants,positive,REVIEW,0.4876,prob_negative=0.436 >= 0.2749 → human review
+1784362999.456618,Standard KYC process required for account opening.,KYC process,banking,positive,POSITIVE,0.8043,
+1784363002.1287165,The pasta was overcooked and completely bland.,pasta,restaurants,positive,REVIEW,0.5479,prob_negative=0.440 >= 0.2749 → human review
+1784363074.180853,The pasta was absolutely delicious but the service was very slow.,service,restaurants,positive,POSITIVE,0.8212,
+1784366716.4594967,The pasta was absolutely delicious but the service was very slow.,service,restaurants,positive,POSITIVE,0.8212,
+1784366821.2070022,The pasta was absolutely delicious but the service was very slow.,service,restaurants,positive,POSITIVE,0.8212,
