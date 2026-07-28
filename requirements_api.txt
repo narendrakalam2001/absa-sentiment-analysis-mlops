@@ -1,14 +1,27 @@
 # ============================================================
-# requirements_api.txt — API-only (for Render / Docker deploy)
+# requirements_api.txt — Render deployment
+# FIX: Added imbalanced-learn (imblearn) — missing from before
+#      Model loaded at startup needs all training dependencies
 # ============================================================
+
+# Core ML
 scikit-learn==1.4.2
 numpy==1.26.4
 pandas==2.2.2
 scipy==1.13.0
 joblib==1.4.2
+
+# Gradient boosting
 xgboost==2.0.3
 lightgbm==4.3.0
+
+# ── FIX: imblearn was missing — causes model load failure ──
+imbalanced-learn==0.12.2
+
+# NLP
 nltk==3.8.1
+
+# Serving
 fastapi==0.111.0
 uvicorn[standard]==0.29.0
 pydantic==2.7.1
