@@ -58,7 +58,7 @@ This ensures CX teams only manually review flagged negative aspects, reducing tr
 |---|---|
 | 🚀 **FastAPI (Swagger UI)** | [https://absa-sentiment-analysis-mlops.onrender.com/docs](https://absa-sentiment-analysis-mlops.onrender.com/docs) |
 | 📊 **Monitoring Dashboard** | [https://absa-sentiment-analysis-mlops.streamlit.app](https://absa-sentiment-analysis-mlops.streamlit.app/) |
-| 📓 **EDA Notebook** | [notebooks/absa_eda_final.ipynb](notebooks/absa_eda_final.ipynb) |
+| 📓 **EDA Notebook** | [notebooks/absa_eda_final.ipynb](notebooks/absa_eda.ipynb) |
 
 > ⚠️ Render free tier: first request may take 30–60 seconds (cold start).
 
